@@ -1,9 +1,11 @@
-import PropTypes from "prop-types";
-import React from "react";
+import React, { useContext } from "react";
 import { Route } from "react-router-dom";
+import FeedbackContext from "../context/FeedbackContext";
 import AboutIconLink from "../shared/AboutIconLink";
 
-function Header({ text, bgColor, textColor, reverse, setReverse }) {
+function Header({ text }) {
+  const { reverse, setReverse } = useContext(FeedbackContext);
+
   const changeMode = () => {
     setReverse((prev) => !prev);
   };
@@ -33,12 +35,6 @@ Header.defaultProps = {
   text: "Feedback UI",
   bgColor: "rgba(0,0,0,0.5)",
   color: "rgb(255,106,149)",
-};
-
-Header.propTypes = {
-  text: PropTypes.string,
-  bgColor: PropTypes.string,
-  textColor: PropTypes.string,
 };
 
 export default Header;

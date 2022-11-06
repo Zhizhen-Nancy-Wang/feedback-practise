@@ -1,10 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Card from "../shared/Card";
 import FeedbackRating from "./FeedbackRating";
 import Button from "../shared/Button";
+import FeedbackContext from "../context/FeedbackContext";
 
-function FeedbackForm({ addFeedback, reverse }) {
+function FeedbackForm() {
+  const { addFeedback, reverse } = useContext(FeedbackContext);
+
   const [rating, setRating] = useState(10);
   const [text, setText] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);

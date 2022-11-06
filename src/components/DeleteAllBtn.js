@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
-export default function DeleteAll({ feedback, setFeedback }) {
+export default function DeleteAllBtn() {
+  const { feedback, setFeedback } = useContext(FeedbackContext);
+
   const deleteAll = () => {
     if (window.confirm("Are you sure you want to delete all?")) {
       setFeedback([]);

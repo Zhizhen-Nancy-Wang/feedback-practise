@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import FeedbackContext from "../context/FeedbackContext";
 import Card from "../shared/Card";
 
-function AboutPage({ reverse }) {
+function AboutPage() {
+  const { reverse } = useContext(FeedbackContext);
   return (
     <Card reverse={reverse}>
       <div>hello</div>

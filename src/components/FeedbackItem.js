@@ -1,9 +1,10 @@
 // import { faTimes } from "./react-icons/fa";
-import PropsTypes from "prop-types";
-import React from "react";
+import React, { useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 import Card from "../shared/Card";
 
-function FeedbackItem({ item, deleteFeedback, reverse }) {
+function FeedbackItem({ item }) {
+  const { deleteFeedback, reverse } = useContext(FeedbackContext);
   const { id, text, rating } = item;
 
   const handleDelete = () => {
@@ -22,11 +23,5 @@ function FeedbackItem({ item, deleteFeedback, reverse }) {
     </Card>
   );
 }
-
-FeedbackItem.propsTypes = {
-  item: PropsTypes.object.isRequired,
-  reverse: PropsTypes.bool,
-  deleteFeedback: PropsTypes.func.isRequired,
-};
 
 export default FeedbackItem;
