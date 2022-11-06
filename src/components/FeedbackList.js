@@ -9,9 +9,9 @@ function FeedbackList({ feedback, deleteFeedback, reverse }) {
 
   return (
     <div className="feedback-list">
-      {feedback.map((item, id) => {
+      {feedback.map((item, index) => {
         return (
-          <div>
+          <div key={index}>
             <FeedbackItem
               reverse={reverse}
               item={item}

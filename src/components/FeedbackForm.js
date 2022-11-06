@@ -11,13 +11,17 @@ function FeedbackForm({ addFeedback, reverse }) {
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
+    console.log(text.trim().length);
     if (text === "") {
+      console.log("text===null");
       setBtnDisabled(true);
       setMessage(null);
-    } else if (text && text.trim().length < 2) {
+    } else if (text && text.trim().length < 3) {
+      console.log("text<3");
       setMessage("Review needs to be at least 3 characters");
       setBtnDisabled(true);
     } else {
+      console.log("other");
       setMessage(null);
       setBtnDisabled(false);
     }

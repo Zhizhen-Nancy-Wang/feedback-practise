@@ -43,7 +43,7 @@ header {
 
 .card.reverse {
   background-color: rgba(0, 0, 0, 0.4);
-  color: rgb(165, 17, 239);
+  color: rgb(191, 67, 253);
 }
 
 .card h2 {
@@ -164,8 +164,9 @@ input:focus {
 }
 
 .btn:hover {
-  transform: scale(0.98);
+  transform: scale(0.9);
   opacity: 0.9;
+  color: #ff6a95;
 }
 
 .btn:disabled {
@@ -182,7 +183,7 @@ input:focus {
 .message {
   padding-top: 10px;
   text-align: center;
-  color: rebeccapurple;
+  color: rgb(177, 111, 243);
 }
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
