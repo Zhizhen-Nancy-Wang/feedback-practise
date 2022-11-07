@@ -1,12 +1,19 @@
 import { v4 as uuidv4 } from "uuid";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../shared/Card";
 import FeedbackRating from "./FeedbackRating";
 import Button from "../shared/Button";
 import FeedbackContext from "../context/FeedbackContext";
 
 function FeedbackForm() {
-  const { addFeedback, reverse } = useContext(FeedbackContext);
+  const { addFeedback, reverse, feedbackEdit, updateFeedback } = useContext(
+    FeedbackContext
+  );
+  const { edit, item } = feedbackEdit;
+  console.log(edit);
+
+  console.log(item);
+  console.log(feedbackEdit);
 
   const [rating, setRating] = useState(10);
   const [text, setText] = useState("");
@@ -14,7 +21,6 @@ function FeedbackForm() {
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
-    console.log(text.trim().length);
     if (text === "") {
       console.log("text===null");
       setBtnDisabled(true);
@@ -39,11 +45,32 @@ function FeedbackForm() {
         text: text,
         id: uuidv4(),
       };
-      addFeedback(newObj);
-      setText("");
-      setRating(10);
+
+      if (edit === true) {
+        const editedObj = {
+          rating: rating,
+          text: text,
+          id: item.id,
+        };
+        console.log(editedObj);
+        updateFeedback(editedObj);
+        setText("");
+        setRating(10);
+      } else {
+        addFeedback(newObj);
+        setText("");
+        setRating(10);
+      }
     }
   };
+
+  useEffect(() => {
+    if (feedbackEdit.edit === true) {
+      setBtnDisabled(false);
+      setText(item.text);
+      setRating(item.rating);
+    }
+  }, [feedbackEdit]);
 
   return (
     <Card reverse={reverse}>
